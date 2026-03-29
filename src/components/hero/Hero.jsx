@@ -4,7 +4,7 @@ import heroLogo from "../../assets/banner-main.png";
 
 const Hero = () => {
   return (
-    <div className="w-11/12 m-auto">
+    <div className="w-11/12 m-auto mb-22">
       <div
         className="hero h-136.25 bg-black rounded-3xl"
         style={{
