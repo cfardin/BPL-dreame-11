@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { FaFontAwesomeFlag, FaUser } from "react-icons/fa";
 
 
-const PlayerCards = ({ p, money,setMoney }) => {
+const PlayerCards = ({ p, money,setMoney, selectedPlayers, setSelectedPlayers }) => {
   const { playerName, playerCountry, playerType, rating, battingStyle, bowlingStyle, price , playerImg } = p;
   const [isSelected, setSelected] = useState(false);
 
   const calculate = (value) =>{
+    if(value > money){
+      alert("not enough money");
+      return;
+    }
     const x = money - value;
     x < 0 ? setMoney(0) : setMoney(x);
+
+    alert(`you selected ${playerName}`);
+    setSelected(true);
+    setSelectedPlayers([...selectedPlayers, p]);
   }
 
   return (
