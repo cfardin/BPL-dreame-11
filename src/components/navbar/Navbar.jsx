@@ -2,7 +2,7 @@ import React from "react";
 import coin from "../../assets/Coin.png";
 import logo from "../../assets/logo.png"
 
-const Navbar = () => {
+const Navbar = ({money}) => {
   return (
     <div>
       <div className="h-18 navbar bg-base-100 mt-12.5 mb-6 w-11/12 m-auto">
@@ -42,9 +42,10 @@ const Navbar = () => {
                 <a href="">Schedules</a>
             </li>
             <li>
-                <a className="btn rounded-xl bg-white">
-                    <span>0</span> Coin <img src={coin} alt="" />
-                </a>
+                <div className="btn rounded-xl bg-white">
+                    {money}Coin
+                    <img src={coin} alt="" />
+                </div>
             </li>
             </ul>
           </div>
@@ -67,9 +68,9 @@ const Navbar = () => {
                 <a href="">Schedules</a>
             </li>
             <li>
-                <a className="btn rounded-xl bg-white">
-                    <span>0</span> Coin <img src={coin} alt="" />
-                </a>
+                <div className="btn rounded-xl bg-white">
+                    {money}Coin <img src={coin} alt="" />
+                </div>
             </li>
           </ul>
         </div>

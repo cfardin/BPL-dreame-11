@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import './App.css';
 import Hero from './components/hero/Hero';
 import Navbar from './components/navbar/Navbar';
@@ -14,13 +14,14 @@ const fetchPlayer = async() =>{
 const playerPromise = fetchPlayer();
 
 function App() {
- 
+  const [money, setMoney] = useState(50000);
+
   return (
     <>
-        <Navbar></Navbar>
+        <Navbar money = {money}></Navbar>
         <Hero></Hero>
         <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
-          <Players playerPromise = {playerPromise}></Players>
+          <Players money = {money} setMoney = {setMoney} playerPromise = {playerPromise}></Players>
         </Suspense>
     </>
   )

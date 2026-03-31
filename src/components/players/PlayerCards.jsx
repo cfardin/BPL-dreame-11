@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFontAwesomeFlag, FaUser } from "react-icons/fa";
 
 
-const PlayerCards = ({ p }) => {
+const PlayerCards = ({ p, money,setMoney }) => {
   const { playerName, playerCountry, playerType, rating, battingStyle, bowlingStyle, price , playerImg } = p;
+  const [isSelected, setSelected] = useState(false);
+
+  const calculate = (value) =>{
+    const x = money - value;
+    x < 0 ? setMoney(0) : setMoney(x);
+  }
 
   return (
     <div>
+        {/* card */}
       <div className="w-full shadow-sm p-6 rounded-2xl">
         <figure>
           <img 
@@ -28,14 +35,26 @@ const PlayerCards = ({ p }) => {
         </div>
         <div className="divider"></div>
         {/* player info */}
-        <div className="">
-            <div>
+        <div className="space-y-1">
+            <div className="space-y-1">
                 <h4>Ratting : {rating}</h4>
-                <h4>{battingStyle}</h4>
+                <div className="flex justify-between">
+                    <h4>{battingStyle}</h4>
+                    <h4>{bowlingStyle}</h4>
+                </div>
+                
             </div>
             <div className="flex justify-between">
                 <h4>Price : {price}</h4>
-                <button className="btn">Choose Player</button>
+                <button 
+                    onClick={() => {
+                        setSelected(true); 
+                        calculate(price)}}
+                    disabled ={isSelected ? true : false}
+                    className="btn">
+                        {isSelected ? "Selected" : "Choose Player"}
+                </button>
+                
             </div>
         </div>
       </div>
